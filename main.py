@@ -34,21 +34,19 @@ print(df.head())
 
 
 
-# Separate target BEFORE encoding
+
 y = df["NObeyesdad"]
 X = df.drop("NObeyesdad", axis=1)
 
-# One-hot encode only features
 X = pd.get_dummies(X, drop_first=True)
 
-# Train-test split
+
 from sklearn.model_selection import train_test_split
 
 X_train, X_test, y_train, y_test = train_test_split(
     X, y, test_size=0.2, random_state=42, stratify=y
 )
 
-# Scale features
 from sklearn.preprocessing import StandardScaler
 
 scaler = StandardScaler()
